@@ -12,6 +12,10 @@ from src.components.data_transformation import DataTransformationConfig
 
 from src.components.model_trainer import ModelTrainerConfig
 from src.components.model_trainer import ModelTrainer
+import os
+file_path = os.path.join(os.getcwd(), "stud(2).csv")
+df = pd.read_csv(file_path)
+
 @dataclass
 class DataIngestionConfig:
     train_data_path: str=os.path.join('artifacts',"train.csv")
