@@ -9,9 +9,8 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder,StandardScaler
 
 from src.exception import CustomException
-from src.logger import logging
+from src.logger import logging 
 import os
-
 from src.utils import save_object
 
 @dataclass
@@ -21,10 +20,10 @@ class DataTransformationConfig:
 class DataTransformation:
     def __init__(self):
         self.data_transformation_config=DataTransformationConfig()
-
+ 
     def get_data_transformer_object(self):
         '''
-        This function si responsible for data trnasformation
+        This function is responsible for data trnasformation
         
         '''
         try:
@@ -54,9 +53,9 @@ class DataTransformation:
                 ]
 
             )
-
-            logging.info(f"Categorical columns: {categorical_columns}")
-            logging.info(f"Numerical columns: {numerical_columns}")
+            logging.info("Numerical columns standard scaking completed")
+            logging.info("Categorical columns encoding completed")
+            
 
             preprocessor=ColumnTransformer(
                 [
@@ -114,7 +113,7 @@ class DataTransformation:
                 obj=preprocessing_obj
 
             )
-
+ 
             return (
                 train_arr,
                 test_arr,
@@ -122,4 +121,4 @@ class DataTransformation:
             )
         except Exception as e:
             raise CustomException(e,sys)
-        
+         
