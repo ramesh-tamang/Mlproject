@@ -12,19 +12,21 @@ from sklearn.linear_model import LinearRegression
 from sklearn.metrics import r2_score
 from sklearn.neighbors import KNeighborsRegressor
 from sklearn.tree import DecisionTreeRegressor
+#from xgboost import XGBRegressor
 
-
-from src.exception import CustomException
+from src.exception import CustomException 
 from src.logger import logging
 
 from src.utils import save_object,evaluate_models
+from catboost import CatBoostRegressor
+
+CatBoostRegressor(verbose=0, allow_writing_files=False, thread_count=-1)
 
 @dataclass
 class ModelTrainerConfig:
     trained_model_file_path=os.path.join("artifacts","model.pkl")
 
 class ModelTrainer:
-
     def __init__(self):
 
         self.model_trainer_config=ModelTrainerConfig()
@@ -111,7 +113,7 @@ class ModelTrainer:
             
 
 
-
+ 
             
         except Exception as e:
             raise CustomException(e,sys)
