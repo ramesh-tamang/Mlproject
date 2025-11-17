@@ -50,18 +50,12 @@ class DataIngestion:
             raise CustomException(e, sys)
 
 
-if __name__ == "__main__":
-    print("STEP 1: Starting data ingestion")
-    obj = DataIngestion()
-    train_data, test_data = obj.initiate_data_ingestion()
-    print("STEP 2: Data ingestion complete")
+if __name__=="__main__":
+    obj=DataIngestion()
+    train_data,test_data=obj.initiate_data_ingestion()
 
-    print("STEP 3: Starting data transformation")
-    data_transformation = DataTransformation()
-    train_arr, test_arr, _ = data_transformation.initiate_data_transformation(train_data, test_data)
-    print("STEP 4: Data transformation complete")
+    data_transformation=DataTransformation()
+    train_arr,test_arr,_=data_transformation.initiate_data_transformation(train_data,test_data)
 
-    print("STEP 5: Starting model trainer")
-    modeltrainer = ModelTrainer()
-    print(modeltrainer.initiate_model_trainer(train_arr, test_arr))
-    print("STEP 6: Model training complete")
+    modeltrainer=ModelTrainer()
+    print(modeltrainer.initiate_model_trainer(train_arr,test_arr))
